@@ -80,3 +80,10 @@ app.get('/recipes', (req, res) => {
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
+
+// delete recipe requests
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe \`${req.params.id}\``);
+  res.status(204).end();
+});
